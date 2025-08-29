@@ -1,8 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { dataService } from "@/backend/services/data-service"
-import type { CreateTicketRequest } from "@/backend/types"
+import { dataService } from "../../services/data-service"
+import type { CreateTicketRequest } from "../../types"
 
-// GET /api/tickets - Get all tickets
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
@@ -27,7 +26,6 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/tickets - Create a new ticket
 export async function POST(request: NextRequest) {
   try {
     const body: CreateTicketRequest & { userId: string } = await request.json()
